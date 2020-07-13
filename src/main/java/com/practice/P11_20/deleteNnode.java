@@ -1,7 +1,10 @@
 package com.practice.P11_20;
 
+import com.practice.dataStructure.ListNode;
+
 public class deleteNnode {
     /*
+    NO.19
     给定一个链表，删除链表的倒数第n个节点，并返回链表的头节点。
     默认给定的n是有效的
      */
@@ -20,7 +23,9 @@ public class deleteNnode {
      *  1、需要额外的存储空间
      *  2、最慢需要遍历两边链表
      */
-
+    ListNode solution1(){
+        return null;
+    }
 
     /**
      * 思路二：

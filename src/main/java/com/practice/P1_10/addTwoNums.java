@@ -13,17 +13,17 @@ public class addTwoNums {
 
      */
 
-    ListNode<Integer> addTwoNumsSimple(ListNode<Integer> l1, ListNode<Integer> l2){
+    ListNode addTwoNumsSimple(ListNode l1, ListNode l2){
 
-        ListNode<Integer> res = new ListNode<Integer>(0);
-        ListNode<Integer> cur = res,q = l1,p = l2;
+        ListNode res = new ListNode(0);
+        ListNode cur = res,q = l1,p = l2;
         int carry = 0;
 
         while (Objects.nonNull(l1)||Objects.nonNull(l2)){
             int a = q == null?0:q.getVal();
             int b = p == null?0:p.getVal();
 
-            cur.setNext(new ListNode<>((a+b+carry)%10));
+            cur.setNext(new ListNode((a+b+carry)%10));
             carry = (a+b+carry)/10;
 
             cur = cur.getNext();
@@ -33,14 +33,14 @@ public class addTwoNums {
         }
 
         if (carry > 0){
-            cur.setNext(new ListNode<>(carry));
+            cur.setNext(new ListNode(carry));
         }
         return res.getNext();
     }
 
     public static void main(String[] args) {
-        ListNode<Integer> l1 = new ListNode<>(9);
-        ListNode<Integer> l2 = new ListNode<>(2);
+        ListNode l1 = new ListNode(9);
+        ListNode l2 = new ListNode(2);
         addTwoNums a = new addTwoNums();
         System.out.println(a.addTwoNumsSimple(l1,l2));
     }

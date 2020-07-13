@@ -2,10 +2,10 @@ package com.practice.dataStructure;
 
 import java.util.Objects;
 
-public class ListNode<T> {
-    T val;
-    ListNode<T> next;
-    public ListNode(T val){
+public class ListNode {
+    int val;
+    ListNode next;
+    public ListNode(int val){
         this.val = val;
     }
 
@@ -13,20 +13,20 @@ public class ListNode<T> {
 
     }
 
-    public T getVal() {
+    public int getVal() {
         return val;
     }
 
-    public void setVal(T val) {
+    public void setVal(int val) {
         this.val = val;
     }
 
-    public ListNode<T> getNext() {
+    public ListNode getNext() {
         if (Objects.isNull(next)) return null;
         return next;
     }
 
-    public void setNext(ListNode<T> next) {
+    public void setNext(ListNode next) {
         this.next = next;
     }
 }
