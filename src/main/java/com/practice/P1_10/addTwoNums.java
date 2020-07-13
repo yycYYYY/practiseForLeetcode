@@ -16,32 +16,37 @@ public class addTwoNums {
     ListNode addTwoNumsSimple(ListNode l1, ListNode l2){
 
         ListNode res = new ListNode(0);
-        ListNode cur = res,q = l1,p = l2;
+        ListNode cur = res;
         int carry = 0;
 
         while (Objects.nonNull(l1)||Objects.nonNull(l2)){
-            int a = q == null?0:q.getVal();
-            int b = p == null?0:p.getVal();
+            int a = l1 == null?0:l1.val;
+            int b = l2 == null?0:l2.val;
 
-            cur.setNext(new ListNode((a+b+carry)%10));
+            cur.next = (new ListNode((a+b+carry)%10));
             carry = (a+b+carry)/10;
 
-            cur = cur.getNext();
-            q = Objects.isNull(q.getNext())?null:q.getNext();
-            p = Objects.isNull(p.getNext())?null:q.getNext();
+            cur = cur.next;
+
+            if (l1 != null){
+                l1 = l1.next;
+            }
+            if (l2 != null){
+                l2 = l2.next;
+            }
 
         }
 
         if (carry > 0){
-            cur.setNext(new ListNode(carry));
+            cur.next = new ListNode(carry);
         }
-        return res.getNext();
+        return res.next;
     }
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode(9);
         ListNode l2 = new ListNode(2);
         addTwoNums a = new addTwoNums();
-        System.out.println(a.addTwoNumsSimple(l1,l2));
+        System.out.println(a.addTwoNumsSimple(l1,l2).val+" "+a.addTwoNumsSimple(l1,l2).next.val);
     }
 }

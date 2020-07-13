@@ -2,6 +2,9 @@ package com.practice.P11_20;
 
 import com.practice.dataStructure.ListNode;
 
+import java.util.Objects;
+import java.util.Stack;
+
 public class deleteNnode {
     /*
     NO.19
@@ -23,8 +26,26 @@ public class deleteNnode {
      *  1、需要额外的存储空间
      *  2、最慢需要遍历两边链表
      */
-    ListNode solution1(){
-        return null;
+    ListNode solution1(ListNode l,int N){
+        //边界输入判定
+        if (l.next == null){
+            return null;
+        }
+
+        Stack<ListNode> stack = new Stack<>();
+        ListNode cur = new ListNode();
+
+        while (Objects.nonNull(l.next)){
+            stack.push(l);
+            l = l.next;
+        }
+        for (int a = 0;a < N;a++){
+            cur = stack.pop();
+        }
+         stack.pop();
+        cur.next = stack.pop();
+
+        return l;
     }
 
     /**
@@ -36,4 +57,27 @@ public class deleteNnode {
      *      4、当pre到头后，改变cur指针的next指向。（如果cur指向a，next就指向a+1）
      *      5、返回头节点
      */
+    ListNode solution2(ListNode l,int N){
+        ListNode pre = l;
+
+        ListNode cur = l;
+        for (int a = 0;a < N;a++){
+            pre = pre.next;
+        }
+
+        //注意这里需要对ListNode的边界输入做判定，即如果输入的链表只有一个节点，应返回为空
+
+        if (pre == null){
+            return null;
+        }
+
+        while (Objects.nonNull(pre.next)){
+            pre = pre.next;
+            cur = cur.next;
+        }
+
+        cur.next = cur.next.next;
+
+        return l;
+    }
 }
