@@ -13,6 +13,15 @@ public class mergeTwoLists {
      *
      */
     ListNode solution1(ListNode l1,ListNode l2){
-        return null;
+
+
+        ListNode pre = new ListNode();
+        ListNode cur = new ListNode();
+        pre.next = cur;
+
+        while (l1.next != null&&l2.next !=null){
+
+        }
+        return pre.next;
     }
 }
