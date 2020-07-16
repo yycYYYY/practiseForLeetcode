@@ -10,18 +10,33 @@ public class mergeTwoLists {
 
     /**
      *
-     *
+     * 指针法，比递归法更省空间
      */
     ListNode solution1(ListNode l1,ListNode l2){
 
+        if (l1 == null) return l2;
+
+        if (l2 == null) return l1;
 
         ListNode pre = new ListNode();
-        ListNode cur = new ListNode();
-        pre.next = cur;
+//        这里错误了，为什么错误了，有时间想下
+//        while (l1.next != null&&l2.next !=null){
+        while (l1 != null&&l2 !=null){
 
-        while (l1.next != null&&l2.next !=null){
-
+            if (l1.val <= l2.val){
+                pre.next = l1;
+                l1 = l1.next;
+            }else {
+                pre.next = l2;
+                l2 =l2.next;
+            }
+            pre = pre.next;
         }
+        pre.next = l1 == null?l2:l1;
         return pre.next;
     }
+
+    /**
+     * 递归法，思路简单，相对于指针法浪费空间和时间
+     */
 }
