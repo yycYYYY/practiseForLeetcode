@@ -1,10 +1,11 @@
-package com.practice.P21_30;
+package com.practice.P1_100.P21_30;
 
 import com.practice.dataStructure.ListNode;
 
 public class mergeTwoLists {
     /*
     NO.21
+    合并两个有序链表
     将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
      */
 
@@ -36,7 +37,7 @@ public class mergeTwoLists {
         return pre.next;
     }
 
-    /**
+    /*
      * 递归法，思路简单，相对于指针法浪费空间和时间
      */
 }

@@ -1,4 +1,4 @@
-package com.practice.P21_30;
+package com.practice.P1_100.P21_30;
 
 import com.practice.dataStructure.ListNode;
 
