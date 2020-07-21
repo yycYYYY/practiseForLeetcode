@@ -111,5 +111,6 @@ public class mergeKLists {
             System.out.println(res.val);
             res = res.next;
         }
+
     }
 }
