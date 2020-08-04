@@ -1,5 +1,10 @@
 package com.practice.P1_100.P1_10;
 
+import com.practice.dataStructure.ListNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class convertZ {
 
     /*
@@ -31,8 +36,22 @@ public class convertZ {
      */
     String solution1(String s,int numRows){
         if (s == null || numRows == 1 || numRows == 0) return s;
+
         StringBuilder[] resTemp = new StringBuilder[numRows];
-        StringBuilder res = null;
+        for (int i = 0;i < resTemp.length;i++){
+            resTemp[i] = new StringBuilder();
+        }
+
+        StringBuilder res = new StringBuilder();
+        int flag = -1,start = 0;
+
+        for (int i = 0;i < s.length();i++){
+            if (start == 0 || start == numRows-1) flag = -flag;
+
+            resTemp[start].append(s.charAt(i));
+            start += flag;
+
+        }
 
         for (StringBuilder temp:resTemp){
             res.append(temp);
@@ -42,6 +61,7 @@ public class convertZ {
 
     public static void main(String[] args) {
         convertZ z = new convertZ();
-        z.solution1("123",3);
+        String a = z.solution1("asdfghj",3);
+        System.out.println(a);
     }
 }
