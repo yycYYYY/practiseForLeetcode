@@ -43,6 +43,7 @@ public class convertZ {
         }
 
         StringBuilder res = new StringBuilder();
+        //flag作为递增的变化位，start准确的应该说是current，当前位置
         int flag = -1,start = 0;
 
         for (int i = 0;i < s.length();i++){
@@ -57,11 +58,5 @@ public class convertZ {
             res.append(temp);
         }
         return res.toString();
-    }
-
-    public static void main(String[] args) {
-        convertZ z = new convertZ();
-        String a = z.solution1("asdfghj",3);
-        System.out.println(a);
     }
 }
