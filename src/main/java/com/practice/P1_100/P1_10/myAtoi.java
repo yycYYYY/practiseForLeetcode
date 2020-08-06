@@ -20,6 +20,15 @@ public class myAtoi {
 
      */
     int solution(String str){
+        if(str == null) return -1;
+        int n = str.length();
+        char[] chars = str.toCharArray();
+        int cur = 0;
+        int flag = 1;
+
+        while(cur < n && chars[cur] == ' '){
+            cur++;
+        }
         return 0;
     }
 }
