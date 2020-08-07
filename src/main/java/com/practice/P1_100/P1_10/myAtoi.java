@@ -20,15 +20,51 @@ public class myAtoi {
 
      */
     int solution(String str){
-        if(str == null) return -1;
+        //边界控制
+        if(str == null || str.equals("")) return -1;
+        int res = 0;
         int n = str.length();
         char[] chars = str.toCharArray();
+        //当前位
         int cur = 0;
+        //正负标志位
         int flag = 1;
-
+        //去除空格
         while(cur < n && chars[cur] == ' '){
             cur++;
         }
-        return 0;
+        if (cur>=n) return 0;
+        //判断正负
+        if (chars[cur] == '+'|| chars[cur] == '-'){
+            if (chars[cur] == '-') flag = -1;
+            cur ++;
+        }
+
+        while (cur < n && Character.isDigit(chars[cur])){
+
+            //此处必须加上一个 -  '0'，才能保证转换的值是字符值4 ，否则会转换成ascii值52
+            res = res*10 + chars[cur] - '0';
+
+            cur ++;
+
+            if (flag == 1 &&( res > Integer.MAX_VALUE/10
+                    || (res == Integer.MAX_VALUE/10 && chars[cur] > 7))) return Integer.MAX_VALUE;
+
+            //注意此处的溢出控制，对比的也是大于MAX，因为在计算过程中，我们的res始终是正数
+//            只有在最后返回结果的时候，才会补充正负标志位
+            if (flag == -1 &&( res > Integer.MAX_VALUE/10
+                    || (res == Integer.MAX_VALUE/10 && chars[cur] > 8))) return Integer.MIN_VALUE;
+
+        }
+
+        return res*flag;
     }
+
+    public static void main(String[] args) {
+        myAtoi m = new myAtoi();
+        int a = m.solution("2147483646");
+        System.out.println(a);
+
+    }
+
 }
