@@ -21,7 +21,7 @@ public class myAtoi {
      */
     int solution(String str){
         //边界控制
-        if(str == null || str.equals("")) return -1;
+        if(str == null || str.equals("")) return 0;
         int res = 0;
         int n = str.length();
         char[] chars = str.toCharArray();
@@ -43,17 +43,19 @@ public class myAtoi {
         while (cur < n && Character.isDigit(chars[cur])){
 
             //此处必须加上一个 -  '0'，才能保证转换的值是字符值4 ，否则会转换成ascii值52
-            res = res*10 + chars[cur] - '0';
+            int temp = chars[cur] - '0';
 
-            cur ++;
 
             if (flag == 1 &&( res > Integer.MAX_VALUE/10
-                    || (res == Integer.MAX_VALUE/10 && chars[cur] > 7))) return Integer.MAX_VALUE;
+                    || (res == Integer.MAX_VALUE/10 && temp > 7))) return Integer.MAX_VALUE;
 
             //注意此处的溢出控制，对比的也是大于MAX，因为在计算过程中，我们的res始终是正数
 //            只有在最后返回结果的时候，才会补充正负标志位
             if (flag == -1 &&( res > Integer.MAX_VALUE/10
-                    || (res == Integer.MAX_VALUE/10 && chars[cur] > 8))) return Integer.MIN_VALUE;
+                    || (res == Integer.MAX_VALUE/10 && temp > 8))) return Integer.MIN_VALUE;
+//            注意，做值相加应该在溢出判断之后完成，否则，对于未溢出边界的临界值时，会被错误的认为是溢出
+            res = res*10 + temp;
+            cur ++;
 
         }
 
