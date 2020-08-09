@@ -62,11 +62,4 @@ public class myAtoi {
         return res*flag;
     }
 
-    public static void main(String[] args) {
-        myAtoi m = new myAtoi();
-        int a = m.solution("2147483646");
-        System.out.println(a);
-
-    }
-
 }
