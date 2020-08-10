@@ -45,24 +45,33 @@ public class lengthOfLongestSubstring {
     }
 
     //滑动窗口法
+    /*
+    1、判断下一个right和queue中是否重复，无重复则尽可能的向右添加无重复的元素，遇到重复的停止
+    2、记录队列长度
+    3、删除左面第一个，重复一操作
+
+    对于此操作，浪费了一些时间复杂度，如果当前位置遇到两个连续的重复字符，
+    可以直接把左侧的字符，直接移到当前位置，从而减少一些判断和计算，但如何把左侧的字符直接移到当前位置
+    这个是solution1遇到的问题，也是待解决问题，我们可能需要通过一个标志位和一个存储字符和其在s中位置的map
+     */
     int solution2(String s){
         int maxlen = 0;
-        int right = -1;
+        int right = 0;
         HashSet<Character> queue = new HashSet<>();
         for (int left = 0;left < s.length();left++){
             if (left != 0){
                 queue.remove(s.charAt(left-1));
             }
-            while (right +1 <s.length()&&(!queue.contains(s.charAt(right+1)))){
-                queue.add(s.charAt(right+1));
+            while (right <s.length()&&(!queue.contains(s.charAt(right)))){
+                queue.add(s.charAt(right));
                 right++;
             }
-            maxlen = Math.max(maxlen,right-left+1);
+            maxlen = Math.max(maxlen,right-left);
         }
         return maxlen;
     }
     public static void main(String[] args) {
         lengthOfLongestSubstring l =new lengthOfLongestSubstring();
-        System.out.println(l.solution2("pwwkew"));
+        System.out.println(l.solution2("aabba"));
     }
 }
