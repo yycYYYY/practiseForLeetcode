@@ -3,7 +3,6 @@ package com.practice.P1_100.P81_90;
 import com.practice.dataStructure.ListNode;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class deleteDuplicates2 {
