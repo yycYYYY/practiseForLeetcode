@@ -19,6 +19,24 @@ public class maxArea {
     影响容积有两个因子，x轴y轴，这个思路直接取x最大的情况，逐步缩小，避免了遍历浪费计算路径
      */
     int solution1(int[] height){
-        return 0;
+        if (height.length < 2) return 0;
+        int begin = 0,end = height.length-1;
+        int max = 0,h = 0;
+        while (end - begin > 0){
+            h = Math.min(height[begin],height[end]);
+            max = Math.max(max,(end-begin)*h);
+            if (height[begin] > height[end]){
+                end = end -1;
+            }else {
+                begin = begin +1;
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        maxArea m = new maxArea();
+        int[] a = {1,8,6,2,5,4,8,3,7};
+        System.out.println(m.solution1(a));
     }
 }
