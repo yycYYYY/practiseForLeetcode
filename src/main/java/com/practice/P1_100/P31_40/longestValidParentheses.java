@@ -30,19 +30,21 @@ public class longestValidParentheses {
                 状态转移的条件对了，但是状态转移方程（值的变化方式）错了
                  */
                 if (s.charAt(i-1) == '('){
+//                    此时应该加上当前位置前两位的最大子串长度，因为（也占据着一个位置。
                     dp[i] = (i >= 2?dp[i-2]:0) + 2;
-                }else if (i - dp[i-1] -1 >= 0 && dp[i - dp[i-1] -1] == '('){
-                    dp[i] = dp[i-1] + 2;
+                }else if (i - dp[i-1] -1 >= 0 && s.charAt(i - dp[i-1] -1) == '('){
+//                    注意()(())的情况，此时需要加上当前最大子串之前一位的最大子串
+                    dp[i] = dp[i-1]+ (i-dp[i-1]-2 >= 0?dp[i-dp[i-1]-2]:0) + 2;
                 }
             }
             max = Math.max(max,dp[i]);
         }
-        return dp[len-1];
+        return max;
     }
 
     public static void main(String[] args) {
         longestValidParentheses l = new longestValidParentheses();
-        int a = l.solution1("()(())())))))(");
+        int a = l.solution1("()(())))()");
         System.out.println(a);
     }
 }
