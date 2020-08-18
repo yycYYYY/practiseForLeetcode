@@ -13,11 +13,14 @@ public class maxSubArray {
 
      */
     int solution1(int[] nums){
+        //注意边界（起始点）
         int max = nums[0];
         //dp是每个以i结尾的子串的最大子序和
         int[] dp = new int[nums.length];
         dp[0] = nums[0];
+//        注意边界（结束点）
         for (int i = 1;i < nums.length;i++){
+//            目前遇到过的，最简单的状态转移方程，堪比爬楼梯
             dp[i] = Math.max(0,dp[i - 1]) + nums[i];
             max = Math.max(max,dp[i]);
         }
