@@ -83,19 +83,25 @@ public class intToRoman {
     String solution2(int num){
         StringBuilder res = new StringBuilder();
         int s = 1000;
+        int a = 0;
         String[][] temp = {
                 {"","I","II","III","IV","V","VI","VII","VIII","IX"},
                 {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"},
                 {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"},
                 {"","M","MM","MMM"}
         };
+        for (int i = 0;i < 4;i++){
+            a = num/s;
+            res.append(temp[3-i][a]);
+            s /= 10;
+        }
         return res.toString();
     }
 
     public static void main(String[] args) {
         int a = 4;
         intToRoman i = new intToRoman();
-        String b = i.solution1(a);
+        String b = i.solution2(a);
         System.out.println(b);
     }
 }
