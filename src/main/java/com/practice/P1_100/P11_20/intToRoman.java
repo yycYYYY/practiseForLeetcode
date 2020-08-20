@@ -79,6 +79,19 @@ public class intToRoman {
         return res.toString();
     }
 
+    //由于题目中给出了，num不会大于3999，所以暴力匹配法，也是一个很好的解决
+    String solution2(int num){
+        StringBuilder res = new StringBuilder();
+        int s = 1000;
+        String[][] temp = {
+                {"","I","II","III","IV","V","VI","VII","VIII","IX"},
+                {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"},
+                {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"},
+                {"","M","MM","MMM"}
+        };
+        return res.toString();
+    }
+
     public static void main(String[] args) {
         int a = 4;
         intToRoman i = new intToRoman();
