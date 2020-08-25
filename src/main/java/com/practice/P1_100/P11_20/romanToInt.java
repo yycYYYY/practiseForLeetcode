@@ -45,4 +45,59 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 输出: 1994
 解释: M = 1000, CM = 900, XC = 90, IV = 4.
      */
-}
+
+    /*
+    IV = 5-1
+    VI = 5+1
+    所有的两位特殊标识的数字都是这个规律，可得下方的规律
+    把每一位罗马数字都转成对应值的int，倒叙相加，如果当前位的int值小于上一位，那么res-temp,反之则res+temp
+     */
+    int solution(String s){
+        if (s == null ||s.length() == 0) return 0;
+
+        int res = 0;
+        int pre = 0;
+        int temp = 0;
+        char v = 'a';
+        for (int i = 1;i <= s.length();i++){
+            v = s.charAt(s.length() - i);
+            switch(v) {
+                case 'I':
+                    temp = 1;
+                    break;
+                case 'V':
+                    temp = 5;
+                    break;
+                case 'X':
+                    temp = 10;
+                    break;
+                case 'L':
+                    temp = 50;
+                    break;
+                case 'C':
+                    temp = 100;
+                    break;
+                case 'D':
+                    temp = 500;
+                    break;
+                case 'M':
+                    temp = 1000;
+                    break;
+            }
+            if (temp < pre){
+                res -= temp;
+            }else {
+                res += temp;
+            }
+            pre = temp;
+        }
+        return res;
+        }
+
+    public static void main(String[] args) {
+        romanToInt r = new romanToInt();
+        System.out.println(r.solution("LVIII"));
+    }
+
+
+    }
