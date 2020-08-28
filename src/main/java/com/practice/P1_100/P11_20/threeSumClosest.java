@@ -1,5 +1,7 @@
 package com.practice.P1_100.P11_20;
 
+import java.util.Arrays;
+
 public class threeSumClosest {
     /*
     NO.16 最接近的三数之和
@@ -16,6 +18,17 @@ public class threeSumClosest {
     -10^4 <= target <= 10^4
      */
     int solution(int[] nums,int target){
+        int res = nums[0]+nums[1]+nums[2];
+        //三个nums[]相加的中间量
+        int temp = 0;
+        Arrays.sort(nums);
+        for (int i = 0;i < nums.length;i++){
+            int L = i+1;
+            int R = nums.length;
+            while (L < R){
+                if (nums[i] + nums[L] + nums[R] == target) return target;
+            }
+        }
         return 0;
     }
 }
