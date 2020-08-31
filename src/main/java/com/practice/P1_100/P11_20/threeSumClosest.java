@@ -18,9 +18,9 @@ public class threeSumClosest {
     -10^4 <= target <= 10^4
      */
     int solution(int[] nums,int target){
-        int res = nums[0]+nums[1]+nums[2];
-        //三个nums[]相加的中间量
-        int temp = 0;
+        int res = nums[0]+nums[1]+nums[nums.length-1];
+        //当前res与target的差值绝对值
+        int temp = res - target>0?res-target:target-res;
         Arrays.sort(nums);
         for (int i = 0;i < nums.length;i++){
             int L = i+1;
