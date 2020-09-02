@@ -34,28 +34,41 @@ public class isValid {
      */
     Boolean solution(String s){
         if (s == null || s == "") return true;
-        if (s.charAt(0)==')' || s.charAt(0)=='}' || s.charAt(0)==']' || s.length()%2 == 0) return false;
+        if (s.charAt(0)==')' || s.charAt(0)=='}' || s.charAt(0)==']' || s.length()%2 == 1) return false;
         if (s.charAt(s.length()-1)=='(' || s.charAt(s.length()-1)=='{' || s.charAt(s.length()-1)=='[')
             return false;
 
         Stack stack = new Stack();
-        char pre = 'a';
-        char cur = pre;
-        for (int i = 0;i < s.length()-1;i++){
-            stack.push(s.charAt(i));
+        for(int i = 0;i < s.length();i++){
+
+            if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{'){
+                stack.push(s.charAt(i));
+            }
+
+            if (s.charAt(i) == ')'){
+                if (!stack.empty()&&(char)stack.pop() == '(') continue;
+                return false;
+            }
+
+            if (s.charAt(i) == '}'){
+                if (!stack.empty()&&(char)stack.pop() == '{') continue;
+                return false;
+            }
+
+            if (s.charAt(i) == ']'){
+                if (!stack.empty()&&(char)stack.pop() == '[') continue;
+                return false;
+            }
+
         }
-        while (!stack.empty()){
-            pre = (char) stack.pop();
-            cur = (char) stack.pop();
-            String temp = pre + cur + "";
-            if (temp == "()"||temp == "{}"||temp == "[]") continue;
-            return false;
-        }
-        return true;
+        if (stack.empty()){
+            return true;
+        } else return false;
     }
 
     public static void main(String[] args) {
         isValid i = new isValid();
-        System.out.println(i.solution("(())"));
+        i.solution("{{)}}");
+        System.out.println(i.solution("()}}"));
     }
 }
