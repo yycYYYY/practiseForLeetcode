@@ -1,5 +1,8 @@
 package com.practice.P1_100.P21_30;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class removeDuplicates {
     /*
     NO.26 删除排序数组中的重复项
@@ -23,12 +26,18 @@ public class removeDuplicates {
             if (nums[S] == nums[F]){
                 F++;
                 len--;
-                continue;
+            }else {
+                nums[S+1] = nums[F];
+                F++;
+                S++;
             }
-            F++;
-            S=F-1;
         }
         return len;
     }
 
+    public static void main(String[] args) {
+        removeDuplicates r = new removeDuplicates();
+        int[] nums = {1,1,1,3};
+        System.out.println(r.solution(nums));
+    }
 }
