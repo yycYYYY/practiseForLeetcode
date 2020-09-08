@@ -20,13 +20,20 @@ public class strStr {
     对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。
     */
     int solution(String haystack, String needle){
-        if (haystack == null || haystack == "") return -1;
-        if (needle == null || needle == "") return 0;
+        if (needle == null || needle.equals("")||needle.equals(haystack)) return 0;
+        if (haystack == null || haystack.equals("")) return -1;
         int len = needle.length();
-        for (int i = 0;i < haystack.length()-len;i++){
+//        这里的边界条件应该是haystack.len -len +1，弄错了好几次
+        for (int i = 0;i < haystack.length()-len + 1;i++){
             if (haystack.charAt(i) != needle.charAt(0)) continue;
-            String temp = haystack.split(i,len);
+            String temp = haystack.substring(i,i+len);
+            if (temp.equals(needle)) return i;
         }
-        return 0;
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        strStr s = new strStr();
+        System.out.println(s.solution("mississippi","pi"));
     }
 }
