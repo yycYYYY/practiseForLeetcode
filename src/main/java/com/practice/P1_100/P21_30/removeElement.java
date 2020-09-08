@@ -34,6 +34,24 @@ public class removeElement {
     }
      */
     int solution(int[] nums, int val){
-        return 0;
+        if (nums == null || nums.length == 0) return 0;
+        int len = 0;
+        int index = 0;
+        int temp = 0;
+        for (int i = 0;i <nums.length;i++){
+            if (nums[i] != val){
+                temp = nums[i];
+                nums[i] = nums[len];
+                nums[len] = temp;
+                len++;
+            }
+        }
+        return len;
+    }
+
+    public static void main(String[] args) {
+        removeElement r = new removeElement();
+        int[] nums = {};
+        System.out.println(r.solution(nums,1));
     }
 }

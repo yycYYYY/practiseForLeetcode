@@ -18,6 +18,12 @@ public class removeDuplicates {
     函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。
     你不需要考虑数组中超出新长度后面的元素。
      */
+
+    /*
+    1、sf快慢指针，s为0，f为1
+    2、比较nums[s]nums[f]如果相同，f++，不相等；nums[s+1] = nums[f] s++ f++
+    3、直到f < nums.length
+     */
     int solution(int[] nums){
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return 1;
