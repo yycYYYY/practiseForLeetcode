@@ -24,6 +24,20 @@ public class divide {
     本题中，如果除法结果溢出，则返回 231 − 1。
      */
     int solution(int dividend, int divisor){
+        if (dividend == 0) return 0;
+        boolean sign = (dividend > 0)&(divisor > 0);
+//        相对于正数，负数处理边界更简单
+        if (dividend > 0) dividend = -dividend;
+        if (divisor > 0) divisor = -divisor;
+
+        if (dividend == divisor) return sign?1:-1;
+
+
+
         return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(11>>1);
     }
 }
