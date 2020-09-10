@@ -20,8 +20,8 @@ public class divide {
     提示：
     被除数和除数均为 32 位有符号整数。
     除数不为 0。
-    假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−231,  231 − 1]。
-    本题中，如果除法结果溢出，则返回 231 − 1。
+    假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2^31,  2^31 − 1]。
+    本题中，如果除法结果溢出，则返回 2^31 − 1。
      */
 
     /*
@@ -32,19 +32,39 @@ public class divide {
      */
     int solution(int dividend, int divisor){
         if (dividend == 0) return 0;
-        boolean sign = (dividend > 0)&(divisor > 0);
-//        相对于正数，负数处理边界更简单
+//        由于参数是两个int，边界溢出只有一种情况，就是下面这一行
+        if (dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
+        if (divisor == 1) return dividend;
+        boolean sign = (dividend > 0)&&(divisor > 0) || (dividend < 0)&&(divisor < 0);
+//        定义一个结果标志位，然后把除数被除数，都转成负数，方便运算
         if (dividend > 0) dividend = -dividend;
         if (divisor > 0) divisor = -divisor;
 
         if (dividend == divisor) return sign?1:-1;
 
+        int res = 0;
+        while (dividend <= divisor){
+
+            int tempSor = divisor;
+            int tempRes = 1;
+//            注意此处，需要小于dividend >> 1,如果是小于dividend，会多循环一次
+//            上面的想法也错了。不能使用dividend >> 1，因为这样会造成数值的不准确，应该使用dividend - tempSor
+            while(tempSor >= (dividend -tempSor)){
+               tempSor = tempSor << 1;
+               tempRes = tempRes << 1;
+            }
+            res += tempRes;
+            dividend -= tempSor;
+        }
 
 
-        return 0;
+        return sign?res:0-res;
     }
 
     public static void main(String[] args) {
-        System.out.println(11>>1);
+        divide d = new divide();
+        System.out.println(d.solution(2147483647,2));
+        System.out.println(d.solution(15,2));
+
     }
 }
