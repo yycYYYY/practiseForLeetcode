@@ -23,6 +23,13 @@ public class divide {
     假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−231,  231 − 1]。
     本题中，如果除法结果溢出，则返回 231 − 1。
      */
+
+    /*
+    位运算
+    基本思路：10/3，10-3-3-3  res=3
+    位运算 a<<n 就是a*2^n   a>>n 就是a/2^n
+    通过位运算来减少重复的减法运算
+     */
     int solution(int dividend, int divisor){
         if (dividend == 0) return 0;
         boolean sign = (dividend > 0)&(divisor > 0);
