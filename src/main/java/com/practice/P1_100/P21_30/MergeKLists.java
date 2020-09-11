@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class mergeKLists {
+public class MergeKLists {
     /*
     NO.23
     合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
@@ -92,7 +92,7 @@ public class mergeKLists {
 
 
     public static void main(String[] args) {
-        mergeKLists m = new mergeKLists();
+        MergeKLists m = new MergeKLists();
         ListNode l1 = new ListNode(1);
         l1.next = new ListNode(4);
         l1.next.next = new ListNode(5);

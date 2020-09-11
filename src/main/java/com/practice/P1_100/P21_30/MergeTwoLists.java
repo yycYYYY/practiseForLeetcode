@@ -2,7 +2,7 @@ package com.practice.P1_100.P21_30;
 
 import com.practice.dataStructure.ListNode;
 
-public class mergeTwoLists {
+public class MergeTwoLists {
     /*
     NO.21
     合并两个有序链表

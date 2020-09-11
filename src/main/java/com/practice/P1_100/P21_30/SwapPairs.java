@@ -2,7 +2,7 @@ package com.practice.P1_100.P21_30;
 
 import com.practice.dataStructure.ListNode;
 
-public class swapPairs {
+public class SwapPairs {
     /*
     NO.24
 

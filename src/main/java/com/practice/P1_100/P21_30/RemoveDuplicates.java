@@ -3,7 +3,7 @@ package com.practice.P1_100.P21_30;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class removeDuplicates {
+public class RemoveDuplicates {
     /*
     NO.26 删除排序数组中的重复项
     给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -42,7 +42,7 @@ public class removeDuplicates {
     }
 
     public static void main(String[] args) {
-        removeDuplicates r = new removeDuplicates();
+        RemoveDuplicates r = new RemoveDuplicates();
         int[] nums = {1,1,1,3};
         System.out.println(r.solution(nums));
     }

@@ -1,6 +1,6 @@
 package com.practice.P1_100.P21_30;
 
-public class strStr {
+public class StrStr {
     /*
     NO.28 实现strStr()
     实现 strStr() 函数。
@@ -33,7 +33,7 @@ public class strStr {
     }
 
     public static void main(String[] args) {
-        strStr s = new strStr();
+        StrStr s = new StrStr();
         System.out.println(s.solution("mississippi","pi"));
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class generateParenthesis {
+public class GenerateParenthesis {
     /*
     这个题目刷几道DFS和回溯之后，要好好的反复多看几遍，被坑惨了！！！
     NO.22 生成括号
@@ -85,7 +85,7 @@ public class generateParenthesis {
 
 
     public static void main(String[] args) {
-        generateParenthesis g = new generateParenthesis();
+        GenerateParenthesis g = new GenerateParenthesis();
         g.solution2(2);
         System.out.println(g.solution2(2));
     }
