@@ -20,12 +20,15 @@ public class NextPermutation {
         int min = nums.length - 1;
 
         while(cur > 0){
+//          找后一个数大于前一个数的位置，例如12345，正解就是12354
             if (nums[cur] > nums[cur - 1]){
+//              如果后一个数（当前数cur），大于前一个数（cur-1），就找一找当前数之后，有没有介于nums[cur]nums[cur-1]之间的最小的数
+//              例如1232543，cur数{5}>cur-1数{2}，但5之后的4介于，cur和cur-1的值之间有最小的数是3，调换两个数的位置，得到1233542
                 if (nums[min] > nums[cur - 1]){
                     int temp = nums[min];
                     nums[min] = nums[cur - 1];
                     nums[cur - 1] = temp;
-
+//                  上一步得到了1233542，但这不是正解，还需要把cur-1后面的数组，做一下排序，1233245才是正解
                     int[] sortNums = new int[nums.length - cur];
 
                     for (int i = 0;i < sortNums.length;i++){
@@ -40,6 +43,7 @@ public class NextPermutation {
                 }else min--;
             }else cur --;
         }
+//      如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。
         Arrays.sort(nums);
     }
 
