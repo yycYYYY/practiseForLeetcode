@@ -18,6 +18,7 @@ public class NextPermutation {
         if (nums == null || nums.length ==1) return;
         int cur = nums.length - 1;
         int min = nums.length - 1;
+        
 
         while(cur > 0){
 //          找后一个数大于前一个数的位置，例如12345，正解就是12354
