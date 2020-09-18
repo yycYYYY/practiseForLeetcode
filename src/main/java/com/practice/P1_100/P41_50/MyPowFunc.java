@@ -9,6 +9,8 @@ public class MyPowFunc {
      */
     double myPow(double x,int n){
         if (x == 1 || n == 0) return 1;
+        if (n == 1) return  x;
+        if (n == Integer.MIN_VALUE) return 1.0 / myPow(x,1-(n/2)) * myPow(x,1-(n/2));
         if (n < 0) return 1/myPow(x,-n);
         double temp = myPow(x,n/2);
         if (n % 2 == 0) return temp * temp;
@@ -17,7 +19,9 @@ public class MyPowFunc {
 
     public static void main(String[] args) {
         MyPowFunc m = new MyPowFunc();
-//        System.out.println(m.myPow(0.00001, 2147483647));
-        System.out.println(Integer.MAX_VALUE);
+        int n = -2147483648;
+        m.myPow(2, 2147483647);
+        System.out.println(m.myPow(2,n));
+//        System.out.println(-(n/2));
     }
 }
