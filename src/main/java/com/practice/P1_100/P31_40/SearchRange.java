@@ -17,8 +17,36 @@ public class SearchRange {
      */
     int[] solution(int[] nums,int target){
         int[] res = new int[]{-1,-1};
-        int left = 0,right = nums.length - 1,mid = left + nums.length/2;
+        int left = 0,right = nums.length - 1;
 
+        while(left <= right){
+            int mid = (left + right)>>1;
+            if (nums[mid] == target){
+                int l = mid,r = mid;
+
+                while (l != 0 && nums[l - 1] == target) --l;
+                res[0] = l;
+
+                while (r != nums.length - 1 && nums[r + 1] == target) ++r;
+                res[1] = r;
+
+            }
+
+            if (nums[mid] < target){
+                left = mid + 1;
+            }else {
+                right = mid - 1;
+            }
+        }
         return res;
+    }
+
+    public static void main(String[] args) {
+        SearchRange s = new SearchRange();
+        int[] res = s.solution(new int[]{5,6,7,7,8,8,9},8);
+
+        for (int i:res){
+            System.out.println(i);
+        }
     }
 }
