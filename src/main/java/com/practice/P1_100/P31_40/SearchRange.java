@@ -15,6 +15,10 @@ public class SearchRange {
     输入: nums = [5,7,7,8,8,10], target = 6
     输出: [-1,-1]
      */
+
+    /*
+    二分查找的变种题，思路简单，但是细节比较恶心，需要仔细想下
+     */
     int[] solution(int[] nums,int target){
         int[] res = new int[]{-1,-1};
         int left = 0,right = nums.length - 1;
@@ -23,7 +27,7 @@ public class SearchRange {
             int mid = (left + right)>>1;
             if (nums[mid] == target){
                 int l = mid,r = mid;
-
+//              收回上面的话，细节也没有很恶心，相对于原来的二分，只有这里增加了一点点逻辑
                 while (l != 0 && nums[l - 1] == target) --l;
                 res[0] = l;
 
