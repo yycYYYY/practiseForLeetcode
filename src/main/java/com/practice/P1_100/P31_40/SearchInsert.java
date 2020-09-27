@@ -2,7 +2,7 @@ package com.practice.P1_100.P31_40;
 
 public class SearchInsert {
     /*
-    NO.35 搜索插入位置
+    NO.35 搜索插入位置   （这道简单题在第二遍刷的时候，可以好好看下，就是最简单的二分！！！）
     给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 
     你可以假设数组中无重复元素。
@@ -23,29 +23,27 @@ public class SearchInsert {
     输入: [1,3,5,6], 0
     输出: 0
      */
+
+    /*
+    就是简单的二分，千万不要想复杂了，只需要注意一下，target > nums[nums.length - 1]的边界情况
+     */
     int solution(int[] nums,int target){
+        int len = nums.length;
+        int left = 0,right = len - 1;
+        if (target > nums[len - 1]) return len;
         int res = 0;
-        int left = 0,right = nums.length - 1;
 
         while(left <= right){
 
             int mid = (left + right) >> 1;
-//            if (nums[mid] == target){
-//                return mid;
-//            }
-//
-//            if (left >= right){
-//                if (nums[left] > target){
-//                    return left == 0?0:left - 1;
-//                }else {
-//                    return left  + 1;
-//                }
-//            }
 
-            if (nums[mid] <= target){
-                res = left;
+            if (nums[mid] == target) return mid;
+
+//          但是这里为什么反过来不行
+            if (nums[mid] < target){
                 left = mid + 1;
             }else {
+                res = mid;
                 right = mid - 1;
             }
         }
@@ -54,7 +52,7 @@ public class SearchInsert {
 
     public static void main(String[] args) {
         SearchInsert s = new SearchInsert();
-        int res = s.solution(new int[]{0,1,3,4},2);
+        int res = s.solution(new int[]{1,3,5,6},2);
         System.out.println(res);
     }
 }
