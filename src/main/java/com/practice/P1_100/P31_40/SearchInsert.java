@@ -29,20 +29,21 @@ public class SearchInsert {
 
         while(left <= right){
 
-            int mid = (left + right)>>1;
-            if (nums[mid] == target){
-                return mid;
-            }
+            int mid = (left + right) >> 1;
+//            if (nums[mid] == target){
+//                return mid;
+//            }
+//
+//            if (left >= right){
+//                if (nums[left] > target){
+//                    return left == 0?0:left - 1;
+//                }else {
+//                    return left  + 1;
+//                }
+//            }
 
-            if (left == right){
-                if (nums[left] > target){
-                    return left == 0?0:left - 1;
-                }else {
-                    return left  + 1;
-                }
-            }
-
-            if (nums[mid] < target){
+            if (nums[mid] <= target){
+                res = left;
                 left = mid + 1;
             }else {
                 right = mid - 1;
