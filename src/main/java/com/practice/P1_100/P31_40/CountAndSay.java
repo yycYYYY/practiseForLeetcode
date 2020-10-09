@@ -1,5 +1,7 @@
 package com.practice.P1_100.P31_40;
 
+import java.util.LinkedList;
+
 public class CountAndSay {
     /*
     NO.38 外观数列
@@ -29,19 +31,55 @@ public class CountAndSay {
     解释：当 n = 3 时，序列是 "21"，其中我们有 "2" 和 "1" 两组，"2" 可以读作 "12"，
     也就是出现频次 = 1 而 值 = 2；类似 "1" 可以读作 "11"。所以答案是 "12" 和 "11" 组合在一起，也就是 "1211"。
      */
+    /*
+    思路就是：用两个有序的list，分别装着当前的序列和下一个序列，按照n的大小循环数数
+    res 1        temp  null;   temp ==>  1
+    res 11       temp  1;      temp ==>  11
+    res 21       temp  11;     temp ==>  21
+    res 1211     temp  21;     temp ==>  1211
+
+     */
     String solution(int n){
-        return "";
-    }
-    String a(String a){
-        StringBuilder res = new StringBuilder("");
-        int len = a.length();
-        if (len == 0) return res.toString();
-        int count = 0,cur = 0,curVal = 0;
-        while (cur <= len){
+        LinkedList res = new LinkedList();
+        LinkedList temp = new LinkedList();
+        StringBuilder resStr = new StringBuilder();
+
+        res.add(1);
+        res.add(-1);
+        int count = 0;
+
+        while (n > 1){
+            int cur = (int) res.get(0);
+
+            for (Object num:res){
+                if ((int)num != cur){
+                    temp.add(count);
+                    temp.add(cur);
+                    cur = (int) num;
+                    count = 1;
+                }else {
+                    count ++;
+                }
+            }
+            n--;
+            res = temp;
+            res.add(-1);
+            count = 0;
+            temp = new LinkedList();
 
         }
+        for (Object num:res){
+            if ((int)num != -1){
+                resStr.append(num);
+            }
+        }
 
-        return res.toString();
+        return resStr.toString();
+    }
 
+    public static void main(String[] args) {
+        CountAndSay c = new CountAndSay();
+        String res = c.solution(30);
+        System.out.println(res);
     }
 }
