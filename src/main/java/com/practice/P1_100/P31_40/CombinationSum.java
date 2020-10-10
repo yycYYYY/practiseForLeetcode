@@ -1,5 +1,7 @@
 package com.practice.P1_100.P31_40;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSum {
@@ -48,6 +50,25 @@ public class CombinationSum {
     当cur变成0之后，结束大循环
      */
     List<List<Integer>> solution(int[] candidates, int target){
-        return null;
+        List<Integer> resList = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
+        int cur = candidates.length - 1;
+        Arrays.sort(candidates);
+        while (cur > 0){
+            int tempCur = cur;
+            int temp = target;
+            while (tempCur > 0){
+                if (temp == 0) res.add(resList);
+                if (temp < 0) break;
+
+                if (temp >= candidates[tempCur]){
+                    temp = temp - candidates[tempCur];
+                    resList.add(candidates[tempCur]);
+                }
+                tempCur--;
+            }
+            cur--;
+        }
+        return res;
     }
 }
