@@ -34,6 +34,19 @@ public class CombinationSum {
     candidate 中的每个元素都是独一无二的。
     1 <= target <= 500
      */
+
+    /*
+    暴力思路：
+    单次结果List res    目标值target   每次计算中间值temp   当前位置（数组中的位置）cur
+    当前计算位置（每次循环的计算位置）tempCur
+    数组排序[6,2,3,7] --> [2,3,6,7]    目标7
+    tempCur = cur
+    在数组内，从后往前减target - candidates[tempCur]得到temp，并且往res存入一次当前candidates[tempCur]
+    如果temp是0，直接返回res，小于零本次小循环结束啥也不返回，大于0，再减一次
+    直到temp为0，返回res
+    tempCur为0之后，结束小循环
+    当cur变成0之后，结束大循环
+     */
     List<List<Integer>> solution(int[] candidates, int target){
         return null;
     }
