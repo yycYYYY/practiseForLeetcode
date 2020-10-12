@@ -50,25 +50,39 @@ public class CombinationSum {
     当cur变成0之后，结束大循环
      */
     List<List<Integer>> solution(int[] candidates, int target){
-        List<Integer> resList = new ArrayList<>();
         List<List<Integer>> res = new ArrayList<>();
         int cur = candidates.length - 1;
         Arrays.sort(candidates);
-        while (cur > 0){
+        while (cur >= 0){
             int tempCur = cur;
             int temp = target;
-            while (tempCur > 0){
-                if (temp == 0) res.add(resList);
-                if (temp < 0) break;
 
-                if (temp >= candidates[tempCur]){
-                    temp = temp - candidates[tempCur];
-                    resList.add(candidates[tempCur]);
+            List<Integer> resList = new ArrayList<>();
+            while (tempCur >= 0){
+
+                if (temp < candidates[tempCur]){
+                    tempCur--;
+                    continue;
                 }
-                tempCur--;
+                temp = temp -candidates[tempCur];
+                resList.add(candidates[tempCur]);
+                if (temp == 0){
+                    res.add(resList);
+                    break;
+                }
+
             }
+
             cur--;
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        CombinationSum c = new CombinationSum();
+        int[] can = new int[]{1,2,3,4,6};
+        List res;
+        res = c.solution(can,6);
+        System.out.println(res.toString());
     }
 }
