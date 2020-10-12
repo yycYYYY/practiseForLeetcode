@@ -1,6 +1,6 @@
 package com.practice.P1_100.P91_100;
 
-public class isInterleave {
+public class IsInterleave {
     /*
     NO.97 交错字符串
     给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。

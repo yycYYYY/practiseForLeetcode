@@ -1,6 +1,6 @@
 package com.practice.P1_100.P61_70;
 
-public class minPathSum {
+public class MinPathSum {
     /*
     NO.64 最小路径和
     给定一个包含非负整数的 m x n 网格，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
@@ -45,7 +45,7 @@ public class minPathSum {
     }
 
     public static void main(String[] args) {
-        minPathSum m = new minPathSum();
+        MinPathSum m = new MinPathSum();
         int[][] a = {{1,3,1},{1,5,1},{4,2,1}};
         int s = m.solution(a);
         System.out.println(s);

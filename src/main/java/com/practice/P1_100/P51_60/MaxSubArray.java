@@ -1,6 +1,6 @@
 package com.practice.P1_100.P51_60;
 
-public class maxSubArray {
+public class MaxSubArray {
     /*
     NO.53 最大子序和
     给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
@@ -29,7 +29,7 @@ public class maxSubArray {
 
     public static void main(String[] args) {
         int[] a = {-2,1,-3,4,-1,2,1,-5,4};
-        maxSubArray m = new maxSubArray();
+        MaxSubArray m = new MaxSubArray();
         System.out.println(m.solution1(a));
     }
 }

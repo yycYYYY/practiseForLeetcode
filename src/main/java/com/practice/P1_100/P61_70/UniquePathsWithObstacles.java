@@ -1,8 +1,6 @@
 package com.practice.P1_100.P61_70;
 
-import java.util.Arrays;
-
-public class uniquePathsWithObstacles {
+public class UniquePathsWithObstacles {
     /*
     NO.63 不同路径2
     看起来思路跟62题像是一样，知识多一个判断nums[i][j]是否为1的情况。
@@ -90,7 +88,7 @@ public class uniquePathsWithObstacles {
 
     public static void main(String[] args) {
         int[][] a = {{0,0,0},{0,1,0},{0,0,0}};
-        uniquePathsWithObstacles u =new uniquePathsWithObstacles();
+        UniquePathsWithObstacles u =new UniquePathsWithObstacles();
         System.out.println(u.solution(a));
     }
 }

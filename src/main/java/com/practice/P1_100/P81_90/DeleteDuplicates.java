@@ -2,12 +2,10 @@ package com.practice.P1_100.P81_90;
 
 import com.practice.dataStructure.ListNode;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class deleteDuplicates {
+public class DeleteDuplicates {
     /*
     NO.83
     删除链表中重复的元素
@@ -64,7 +62,7 @@ public class deleteDuplicates {
         l1.next.next = new ListNode(2);
         l1.next.next.next = new ListNode(2);
 
-        deleteDuplicates d = new deleteDuplicates();
+        DeleteDuplicates d = new DeleteDuplicates();
         ListNode res = d.solution2(l1);
 
         while(res != null){

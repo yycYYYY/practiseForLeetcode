@@ -5,7 +5,7 @@ import com.practice.dataStructure.ListNode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class deleteDuplicates2 {
+public class DeleteDuplicates2 {
     /*
     NO.82
     给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字。
@@ -97,7 +97,7 @@ public class deleteDuplicates2 {
      * 还有就是一定要利用好当前链表已经排序
      */
     public static void main(String[] args) {
-        deleteDuplicates2 d = new deleteDuplicates2();
+        DeleteDuplicates2 d = new DeleteDuplicates2();
         ListNode l = new ListNode(1);
         l.next = new ListNode(1);
         l.next.next = new ListNode(3);
