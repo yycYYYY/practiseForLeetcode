@@ -3,7 +3,7 @@ package com.practice.P1_100.P1_10;
 public class longestPalindrome {
     /*
     NO.5   最长回文子串
-    给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+    给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
 
     示例 1：
 
@@ -24,11 +24,11 @@ public class longestPalindrome {
         boolean[][] dp = new boolean[len][len];
         //
         for (int j = 1;j < len;j++){
-            //此处的j指的是
+
             for (int i = j;i >= 0;i--){
                 if (j-i >= 3){
                     //dpij是否为true要根据dp i+1,j-1判断，所以要以j升序，i降序来遍历填写动态状态表
-                    //并且由于j-1<j,所以我们要以j为外层遍历，这里如果时间长，忘了怎么回事的话，可以自己花下
+                    //并且由于j-1<j,所以我们要以j为外层遍历，这里如果时间长，忘了怎么回事的话，可以自己画下
                     //动态规划二维表，每一个ij，需要去找右下元素（i为x，j为y）
                     dp[i][j] = dp[i + 1][j - 1] && s.charAt(i) == s.charAt(j);
                 }else {
