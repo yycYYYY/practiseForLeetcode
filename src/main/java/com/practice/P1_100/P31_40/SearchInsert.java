@@ -1,7 +1,6 @@
 package com.practice.P1_100.P31_40;
 
-public class SearchInsert {
-    /*
+/**
     NO.35 搜索插入位置   （这道简单题在第二遍刷的时候，可以好好看下，就是最简单的二分！！！）
     给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 
@@ -11,7 +10,7 @@ public class SearchInsert {
     输入: [1,3,5,6], 5
     输出: 2
 
-    示例 2:
+    示例2:
     输入: [1,3,5,6], 2
     输出: 1
 
@@ -22,8 +21,8 @@ public class SearchInsert {
     示例 4:
     输入: [1,3,5,6], 0
     输出: 0
-     */
-
+ */
+public class SearchInsert {
     /*
     就是简单的二分，千万不要想复杂了，只需要注意一下，target > nums[nums.length - 1]的边界情况
      */

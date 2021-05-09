@@ -36,7 +36,7 @@ public class PermuteUnique {
             return res;
         }
         int length = nums.length;
-        Deque path =  new ArrayDeque(length);
+        Deque<Integer> path =  new ArrayDeque<>(length);
         boolean[] used = new boolean[length];
 
         Arrays.sort(nums);

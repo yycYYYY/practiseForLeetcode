@@ -7,7 +7,7 @@ public class UniquePaths {
     机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
     问总共有多少条不同的路径？
 
-    示例 1:
+    示例1:
     输入: m = 3, n = 2
     输出: 3
     解释:
@@ -20,7 +20,7 @@ public class UniquePaths {
     1 <= m, n <= 100
     题目数据保证答案小于等于 2 * 10 ^ 9
      */
-    int solution(int m,int n){
+    int solution(int m ,int n){
         if (m < 2 || n<2) return 1;
         //二维数组，每一位的不同路径数
         int[][] dp = new int[m][n];
