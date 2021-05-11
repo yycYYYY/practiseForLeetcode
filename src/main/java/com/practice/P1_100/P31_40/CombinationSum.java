@@ -131,16 +131,19 @@ public class CombinationSum {
             res.add(new ArrayList<>(path));
             return;
         }
-        if (distance < 0){
-            return;
-        }
+//        原来for循环里的distance判断，写的是break，但是后来发现，可以写成return，即把下面这个return操作，换到for循环里
+//        因为，当for循环里面distance小于零，break之后，本次的dfs递归还是会正常结束，和return的结果是一样的，也就是，写break和return实际没有区别
+//        因此下面这个三行的判断，永远也走不到
+//        if (distance < 0){
+//            return;
+//        }
 
         for (int i = begin; i < length; i++) {
             //这里是对剪枝做的优化，由于candidates已经排序（从小到大）了，
             // 如果减到第二个数时，distance已经小于0了，后面的减法实际没有必要做了
             // 这里的小优化，有一点点提升但，更重要的还是去重部分的剪枝
             if (distance < 0){
-                break;
+                return;
             }
             path.addLast(candidates[i]);
             distance -= candidates[i];

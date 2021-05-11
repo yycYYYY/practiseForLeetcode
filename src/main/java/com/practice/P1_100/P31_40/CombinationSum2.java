@@ -1,7 +1,6 @@
 package com.practice.P1_100.P31_40;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * NO.40 组合总和2
@@ -32,13 +31,55 @@ import java.util.List;
  * ]
  */
 public class CombinationSum2 {
-    /*
+    /**
     这个看起来就有点像组合总和+全排列了，两种去重限制叠加到一起了
     既不允许重复用元素，也不允许res包含重复组合
     那就是used[]  begin两个操作一起上？？？
+     简单的组合是不可以的，还是得画一下图
      */
     public List<List<Integer>> solution(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
+        if (candidates == null || candidates.length == 0){
+            return res;
+        }
+        int length = candidates.length;
+        boolean[] used = new boolean[length];
+        Deque<Integer> path = new LinkedList<>();
+
+        Arrays.sort(candidates);
+        dfs(res, candidates, path, 0, 0, length, used, target);
+
         return res;
+    }
+
+    private void dfs(List<List<Integer>> res, int[] candidates, Deque<Integer> path, int depth, int begin, int length, boolean[] used, int distance) {
+        if (distance == 0){
+            res.add(new ArrayList<>(path));
+            return;
+        }
+
+        for (int i = begin; i < length; i++) {
+            if (distance < 0){
+                return;
+            }
+            if (!used[i]){
+                path.addLast(candidates[i]);
+                used[i] = true;
+                distance -= candidates[i];
+                dfs(res, candidates, path, depth + 1, i, length, used, distance);
+                path.removeLast();
+                used[i] = false;
+                distance += candidates[i];
+            }
+        }
+    }
+    public static void main(String[] args) {
+        CombinationSum2 c = new CombinationSum2();
+        int[] can = new int[]{10,1,2,7,6,1,5};
+//        int[] can = new int[]{1,1,2,3};
+        List<List<Integer>> res;
+        res = c.solution(can,8);
+        System.out.println(res.toString());
+
     }
 }
