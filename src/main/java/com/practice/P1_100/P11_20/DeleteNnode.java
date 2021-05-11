@@ -5,7 +5,7 @@ import com.practice.dataStructure.ListNode;
 import java.util.Objects;
 import java.util.Stack;
 
-public class deleteNnode {
+public class DeleteNnode {
     /*
     NO.19
     给定一个链表，删除链表的倒数第n个节点，并返回链表的头节点。

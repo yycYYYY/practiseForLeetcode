@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class fourSum {
+public class FourSum {
     /*
     NO.18 四数之和
-    给定一个包含 n 个整数的数组 nums 和一个目标值 target，
-    判断 nums 中是否存在四个元素 a，b，c 和 d ，
-    使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。
+    给定一个包含n 个整数的数组nums和一个目标值target，
+    判断nums中是否存在四个元素 a，b，c和 d，
+    使得a + b + c + d的值与target相等？找出所有满足条件且不重复的四元组。
 
     注意：
     答案中不可以包含重复的四元组。
@@ -69,7 +69,7 @@ public class fourSum {
         int[] nums1 = {1,0,-1,0,-2,2,-1};
         int[] nums2 = {-4,-1,-1,-1,0,2,1};
         int[] nums3 = {0,0,0,0};
-        fourSum f = new fourSum();
+        FourSum f = new FourSum();
         f.solution(nums2,0);
         System.out.println(f.solution(nums3,0));
     }

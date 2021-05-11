@@ -1,6 +1,6 @@
 package com.practice.P1_100.P1_10;
 
-public class reverseInt {
+public class ReverseInt {
     /*
     NO.7
     给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
@@ -44,7 +44,7 @@ public class reverseInt {
     }
 
     public static void main(String[] args) {
-        reverseInt r =new reverseInt();
+        ReverseInt r =new ReverseInt();
         int a = -2147483412;
         System.out.println(a);
         System.out.println(r.solution2(a)== r.solution1(a));

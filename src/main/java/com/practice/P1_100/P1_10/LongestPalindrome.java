@@ -1,6 +1,6 @@
 package com.practice.P1_100.P1_10;
 
-public class longestPalindrome {
+public class LongestPalindrome {
     /*
     NO.5   最长回文子串
     给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
@@ -45,7 +45,7 @@ public class longestPalindrome {
     }
 
     public static void main(String[] args) {
-        longestPalindrome l = new longestPalindrome();
+        LongestPalindrome l = new LongestPalindrome();
         System.out.println(l.solution("acaaaaaca"));
     }
 }

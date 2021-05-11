@@ -2,10 +2,10 @@ package com.practice.P1_100.P11_20;
 
 import java.util.Stack;
 
-public class isValid {
+public class IsValid {
     /*
     NO.20 有效的括号
-    给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+    给定一个只包括 '('，')'，'{'，'}'，'['，']'的字符串，判断字符串是否有效。
 
     有效字符串需满足：
     左括号必须用相同类型的右括号闭合。
@@ -16,19 +16,19 @@ public class isValid {
     输入: "()"
     输出: true
 
-    示例 2:
+    示例2:
     输入: "()[]{}"
     输出: true
 
-    示例 3:
+    示例3:
     输入: "(]"
     输出: false
 
-    示例 4:
+    示例4:
     输入: "([)]"
     输出: false
 
-    示例 5:
+    示例5:
     输入: "{[]}"
     输出: true
      */
@@ -67,7 +67,7 @@ public class isValid {
     }
 
     public static void main(String[] args) {
-        isValid i = new isValid();
+        IsValid i = new IsValid();
         i.solution("{{)}}");
         System.out.println(i.solution("()}}"));
     }

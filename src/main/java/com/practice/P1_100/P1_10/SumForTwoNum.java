@@ -2,7 +2,7 @@ package com.practice.P1_100.P1_10;
 
 import java.util.HashMap;
 
-public class sumForTwoNum {
+public class SumForTwoNum {
 
     /*
     NO.1    两数之和
@@ -47,7 +47,7 @@ public class sumForTwoNum {
     }
 
 //    public static void main(String[] args) {
-//        sumForTwoNum s = new sumForTwoNum();
+//        SumForTwoNum s = new SumForTwoNum();
 //        ClassLoader cl2 = s.getClass().getClassLoader();
 //        while (cl2 != null){
 //            System.out.println(cl2.toString());

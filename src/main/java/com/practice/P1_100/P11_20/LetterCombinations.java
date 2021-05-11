@@ -2,10 +2,10 @@ package com.practice.P1_100.P11_20;
 
 import java.util.*;
 
-public class letterCombinations {
+public class LetterCombinations {
     /*
     NO.17 电话号码的字母组合
-    给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
+    给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。
     给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
 
     示例:
@@ -97,7 +97,7 @@ public class letterCombinations {
         return res;
     }
     public static void main(String[] args) {
-        letterCombinations l = new letterCombinations();
+        LetterCombinations l = new LetterCombinations();
 //        l.solution("23");
         System.out.println(l.solution2("230"));
 

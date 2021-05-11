@@ -1,6 +1,6 @@
 package com.practice.P1_100.P1_10;
 
-public class myAtoi {
+public class MyAtoi {
     /*
     NO.8
     请你来实现一个atoi函数，使其能将字符串转换成整数。
