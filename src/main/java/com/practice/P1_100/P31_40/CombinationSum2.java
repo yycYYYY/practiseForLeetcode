@@ -75,10 +75,10 @@ public class CombinationSum2 {
     }
     public static void main(String[] args) {
         CombinationSum2 c = new CombinationSum2();
-        int[] can = new int[]{10,1,2,7,6,1,5};
-//        int[] can = new int[]{1,1,2,3};
+//        int[] can = new int[]{10,1,2,7,6,1,5};
+        int[] can = new int[]{1,1,2,3};
         List<List<Integer>> res;
-        res = c.solution(can,8);
+        res = c.solution(can,4);
         System.out.println(res.toString());
 
     }
