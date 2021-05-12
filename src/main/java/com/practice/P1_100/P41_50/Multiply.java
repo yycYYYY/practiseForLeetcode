@@ -21,26 +21,68 @@ package com.practice.P1_100.P41_50;
  */
 public class Multiply {
 
-    final static String ZERO = "0";
 
     String solution(String num1, String num2){
-        if (num1 == null || num2 == null || ZERO.equals(num1) || ZERO.equals(num2)){
-            return ZERO;
+        if ("0".equals(num1) || "0".equals(num2)){
+            return "0";
         }
 
         StringBuilder res = new StringBuilder();
 
-        for (int i = 0; i < num1.length(); i++) {
+        int[] result = new int[num1.length() * num2.length()];
+        for (int i = num1.length() - 1; i >= 0; i--) {
 
-            for (int j = 0; j < num2.length(); j++) {
-
+            for (int j = num2.length() - 1; j >= 0; j--) {
+                result[i + j +1] = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
             }
         }
 
-        return null;
+//        for ()
+
+        return res.toString();
+    }
+
+    String solution2(String num1, String num2){
+        //把字符串转换成char数组
+        char chars1[] = num1.toCharArray();
+        char chars2[] = num2.toCharArray();
+
+        //声明存放结果和两个乘积的容器
+        int result[] = new int[chars1.length + chars2.length];
+        int n1[] = new int[chars1.length];
+        int n2[] = new int[chars2.length];
+
+        //把char转换成int数组，为什么要减去一个'0'呢？因为要减去0的ascii码得到的就是实际的数字
+        for(int i = 0; i < chars1.length;i++)
+            n1[i] = chars1[i]-'0';
+        for(int i = 0; i < chars2.length;i++)
+            n2[i] = chars2[i]-'0';
+
+        //逐个相乘，因为你会发现。AB*CD = AC(BC+AD)BD , 然后进位。
+        for(int i =0 ; i < chars1.length; i++){
+            for(int j =0; j < chars2.length; j++){
+                result[i+j]+=n1[i]*n2[j];
+            }
+        }
+
+        //满10进位，从后往前满十进位
+        for(int i =result.length-1; i > 0 ;i--){
+            result[i-1] += result[i] / 10;
+            result[i] = result[i] % 10;
+        }
+
+        //转成string并返回
+        String resultStr = "";
+        for(int i = 0; i < result.length-1; i++){
+            resultStr+=""+result[i];
+        }
+        return resultStr;
     }
 
     public static void main(String[] args) {
-
+        String a = "123";
+        String b = "456";
+        Multiply m = new Multiply();
+        System.out.println(m.solution2(a, b));
     }
 }
