@@ -2,17 +2,19 @@ package com.practice.P1_100.P1_10;
 
 import java.util.HashMap;
 
+/**
+ NO.1    两数之和
+ 给定 nums = [2, 7, 11, 15], target = 9
+
+ 因为 nums[0] + nums[1] = 2 + 7 = 9
+ 所以返回 [0, 1]
+ * @author admin
+
+ */
 public class SumForTwoNum {
 
-    /*
-    NO.1    两数之和
-    给定 nums = [2, 7, 11, 15], target = 9
 
-      因为 nums[0] + nums[1] = 2 + 7 = 9
-      所以返回 [0, 1]
-
-     */
-    /*
+    /**
     暴力法
     时间O[n],空间O[n]
      */
@@ -28,12 +30,12 @@ public class SumForTwoNum {
         throw new Exception("没有两数之和");
     }
 
-    /*
+    /**
     hash表
     时间O[1]，空间O[n]
      */
-    public int[] twoSuminHash(int[] nums,int target) throws Exception {
-        HashMap<Integer,Integer> numsKV = new HashMap<Integer,Integer>();
+    public int[] twoSumInHash(int[] nums,int target) throws Exception {
+        HashMap<Integer,Integer> numsKV = new HashMap();
         for (int m = 0;m < nums.length;m++){
             numsKV.put(nums[m],m);
         }
