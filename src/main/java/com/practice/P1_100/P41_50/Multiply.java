@@ -21,7 +21,7 @@ package com.practice.P1_100.P41_50;
  */
 public class Multiply {
 
-
+    //太蠢了，记得思路，但是记不清细节
     String solution(String num1, String num2){
         if ("0".equals(num1) || "0".equals(num2)){
             return "0";
@@ -29,15 +29,14 @@ public class Multiply {
 
         StringBuilder res = new StringBuilder();
 
-        int[] result = new int[num1.length() * num2.length()];
-        for (int i = num1.length() - 1; i >= 0; i--) {
-
-            for (int j = num2.length() - 1; j >= 0; j--) {
-                result[i + j +1] = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+        int[] result = new int[num1.length() + num2.length()];
+        for (int i = 0; i < num1.length(); i++) {
+            for (int j = 0; j < num2.length(); j++) {
+                result[i + j] += (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
             }
         }
 
-//        for ()
+        for ()
 
         return res.toString();
     }
