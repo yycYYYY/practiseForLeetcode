@@ -1,6 +1,5 @@
 package com.practice.dataStructure;
 
-import java.util.Objects;
 
 public class ListNode {
     public int val;

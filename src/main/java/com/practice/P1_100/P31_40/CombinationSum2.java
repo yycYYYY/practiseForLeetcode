@@ -32,9 +32,13 @@ import java.util.*;
  */
 public class CombinationSum2 {
     /**
+     * 这道题的回溯操作，dfs，去重操作，极为经典！！！！！
+     * 如果再看到这道题，忘记了解法，一定要回过头来，再画一遍图！！！！！！！
+     *
     这个看起来就有点像组合总和+全排列了，两种去重限制叠加到一起了
     既不允许重复用元素，也不允许res包含重复组合
-    那就是used[]  begin两个操作一起上？？？
+    那就是used[]  begin两个操作一起上？？？  是的，没错，就是俩者一起上，第一次错了，是因为used数组用的不对，见#65行
+     单独的used[]并不是去重操作，仅仅是dfs的记录操作，用于替代dfs的候补列表栈，真正去重的是#65行的那个判断，那个是精髓
      简单的组合是不可以的，还是得画一下图
      */
     public List<List<Integer>> solution(int[] candidates, int target) {
@@ -52,28 +56,33 @@ public class CombinationSum2 {
         return res;
     }
 
-    private void dfs(List<List<Integer>> res, int[] candidates, Deque<Integer> path, int depth, int begin, int length, boolean[] used, int distance) {
-        if (distance == 0){
-            res.add(new ArrayList<>(path));
-            return;
-        }
-
-        for (int i = begin; i < length; i++) {
-            if (distance < 0){
+        private void dfs(List<List<Integer>> res, int[] candidates, Deque<Integer> path, int depth, int begin, int length, boolean[] used, int distance) {
+            if (distance == 0){
+                res.add(new ArrayList<>(path));
                 return;
             }
-            if (!used[i]){
-                path.addLast(candidates[i]);
-                used[i] = true;
-                distance -= candidates[i];
-                dfs(res, candidates, path, depth + 1, i, length, used, distance);
-                path.removeLast();
-                used[i] = false;
-                distance += candidates[i];
+
+            for (int i = begin; i < length; i++) {
+                if (distance < 0){
+                    return;
+                }
+    //          第一遍没能去重，used用的不对，主要是这里，
+                if (i > 0 && candidates[i] == candidates[i - 1] && !used[i - 1]){
+                    continue;
+                }
+
+                if (!used[i]){
+                    path.addLast(candidates[i]);
+                    used[i] = true;
+                    distance -= candidates[i];
+                    dfs(res, candidates, path, depth + 1, i, length, used, distance);
+                    path.removeLast();
+                    used[i] = false;
+                    distance += candidates[i];
+                }
             }
         }
-    }
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         CombinationSum2 c = new CombinationSum2();
 //        int[] can = new int[]{10,1,2,7,6,1,5};
         int[] can = new int[]{1,1,2,3};
