@@ -21,7 +21,7 @@ package com.practice.P1_100.P41_50;
  */
 public class Multiply {
 
-    //太蠢了，记得思路，但是记不清细节
+    //太蠢了，记得思路，但是记不清细节，一定要记得，乘法的操作
     String solution(String num1, String num2){
         if ("0".equals(num1) || "0".equals(num2)){
             return "0";
@@ -45,7 +45,10 @@ public class Multiply {
                     res.append(temp % 10);
                     res.append(temp / 10);
                 }else {
-                    res.append(temp);
+                    //注意如果是0，那就不进位了，否则会导致res出现以0结束的情况，依旧是最终返回的res以0打头的情况
+                    if (temp != 0) {
+                        res.append(temp);
+                    }
                 }
                 continue;
             }
@@ -57,8 +60,8 @@ public class Multiply {
     }
 
     public static void main(String[] args) {
-        String a = "2";
-        String b = "3";
+        String a = "999999999999";
+        String b = "999999999999999";
         Multiply m = new Multiply();
         System.out.println(m.solution(a, b));
     }
