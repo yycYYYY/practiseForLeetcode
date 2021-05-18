@@ -1,5 +1,8 @@
 package com.practice.P1_100.P51_60;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * NO.50 跳跃游戏
  * 给定一个非负整数数组nums ，你最初位于数组的 第一个下标 。
@@ -23,11 +26,23 @@ package com.practice.P1_100.P51_60;
 public class CanJump {
     /**
      * 看到这道题第一反应，有点刷回溯dfs刷的走火入魔了，第一反应竟然是画树，dfs！爷直接穷举剪枝深度遍历
-     * 但一看标签，用贪心，算了，明天再复习一遍贪心再说把
+     * 贪心：每次按最远可移动距离，跳到最远，如果跳到最后，跳的距离大于等于最后一位，那肯定返回true/
      * @param nums
      * @return
      */
     public boolean solution(int[] nums){
+        if (nums.length == 1){
+            return true;
+        }
+
+        int length = nums.length;
+        List<Integer> path = new ArrayList<>();
+        int distance = length;
+        int cur = 0;
+        while (cur < length - 1){
+            path.add();
+        }
+
 
         return false;
     }
