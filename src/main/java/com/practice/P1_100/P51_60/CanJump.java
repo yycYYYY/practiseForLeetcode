@@ -2,6 +2,7 @@ package com.practice.P1_100.P51_60;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * NO.50 跳跃游戏
@@ -36,14 +37,22 @@ public class CanJump {
         }
 
         int length = nums.length;
-        List<Integer> path = new ArrayList<>();
-        int distance = length;
-        int cur = 0;
-        while (cur < length - 1){
-            path.add();
+        // 每一位可以跳的最远距离
+        int distance = 0;
+
+        // 注意这里遍历的范围是，当前位（i）可以走的最远的范围
+        // 例如{2,3,1,1,4} 当走到第一位2的时候，最远可以跳到nums[2],我们就遍历走一下nums[1]nums[2]
+        // 遍历走这两个位置，看走到每一个位置能走多远，如果能走的更远，就更新distance，
+        // 遍历到nums[1]时发现，能走到1 + 3 = 4，就更新distance为4，遍历到nums[2],发现最远距离是2 + 1 = 3
+        // 那就不更新distance，当前distance为4，直接跳到nums[4]
+        for (int i = 0; i <= distance; i++) {
+            int temp = i + nums[i];
+            distance = Math.max(temp, distance);
+            // 如果最远距离大于最后一个位置的下标，那肯定能跳过去
+            if (distance >= length -1){
+                return true;
+            }
         }
-
-
         return false;
     }
 }
