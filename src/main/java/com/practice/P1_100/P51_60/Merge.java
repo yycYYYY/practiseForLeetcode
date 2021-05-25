@@ -1,6 +1,8 @@
 package com.practice.P1_100.P51_60;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -47,6 +49,17 @@ public class Merge {
                 }
             }
         }
+//        {{4, 5}, {1, 5}, {0, 1}, {15, 18}},对二维数组排序，compare方法返回负数，则调换两者；正数，则不调换
+//        Arrays.sort(intervals, new Comparator<int[]>() {
+//            @Override
+//            public int compare(int[] o1, int[] o2) {
+//                if (o1[0] == o2[0]){
+//                    return o1[1] - o2[1];
+//                }else {
+//                    return o1[0] -o2[0];
+//                }
+//            }
+//        });
 
         for (int i = 1; i < length; i++) {
             if (intervals[i][0] > intervals[i - 1][1]){
