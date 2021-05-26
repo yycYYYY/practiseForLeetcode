@@ -41,17 +41,21 @@ public class Subsets {
      * @param nums
      * @return
      */
+    List<List<Integer>> res = new ArrayList<>();
+    Deque<Integer> path = new ArrayDeque<>();
     public List<List<Integer>> solution(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
+
         Arrays.sort(nums);
         int length = nums.length;
         boolean[] used = new boolean[length];
-        Deque<Integer> path = new ArrayDeque<>();
-        dfs(res, nums, path, used, length, 0, 0);
+
+        dfs(nums, used, length, 0, 0);
         return res;
     }
 
-    public void dfs(List<List<Integer>> res, int[] nums, Deque<Integer> path,boolean[] used, int length, int depth, int cur){
+    //复习一遍代码，cur作用完全可以用depth代替，可以直接用两个变量完全可以用一个depth完成
+
+    public void dfs(int[] nums, boolean[] used, int length, int depth, int cur){
         res.add(new ArrayList<>(path));
         if (depth == length){
             return;
@@ -66,7 +70,7 @@ public class Subsets {
                 }
                 path.addLast(nums[i]);
                 used[i] = true;
-                dfs(res, nums, path, used, length, depth + 1, cur + 1);
+                dfs(nums, used, length, depth + 1, cur + 1);
                 path.removeLast();
                 used[i] = false;
                 depth--;
@@ -80,7 +84,7 @@ public class Subsets {
 
     public static void main(String[] args) {
         Subsets s = new Subsets();
-        int[] a = {1,2};
+        int[] a = {1, 2, 2};
         List res = s.solution(a);
         System.out.println(res);
     }
