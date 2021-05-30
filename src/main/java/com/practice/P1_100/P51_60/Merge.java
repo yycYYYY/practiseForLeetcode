@@ -1,5 +1,10 @@
 package com.practice.P1_100.P51_60;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 /**
  * NO.56 合并区间
  * 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。
@@ -31,7 +36,50 @@ public class Merge {
         if (intervals == null || intervals.length <= 1){
             return intervals;
         }
-        int[][] res = new int[2][];
-        return res;
+        int length = intervals.length;
+        List<int[]> res = new ArrayList<>();
+
+        //这个冒泡，我猜会超时。还行，没超时，换个写法，换成下面的重写Arrays.sort()
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length - 1 - i; j++) {
+                if (intervals[j + 1][0] < intervals[j][0]){
+                    int[] temp = intervals[j];
+                    intervals[j] = intervals[j + 1];
+                    intervals[j + 1] = temp;
+                }
+            }
+        }
+//        {{4, 5}, {1, 5}, {0, 1}, {15, 18}},对二维数组排序，compare方法返回负数，则调换两者；正数，则不调换
+//        Arrays.sort(intervals, new Comparator<int[]>() {
+//            @Override
+//            public int compare(int[] o1, int[] o2) {
+//                if (o1[0] == o2[0]){
+//                    return o1[1] - o2[1];
+//                }else {
+//                    return o1[0] -o2[0];
+//                }
+//            }
+//        });
+
+        for (int i = 1; i < length; i++) {
+            if (intervals[i][0] > intervals[i - 1][1]){
+                res.add(intervals[i - 1]);
+                continue;
+            }
+            intervals[i][0] = intervals[i - 1][0];
+            if (intervals[i][1] < intervals[i - 1][1]){
+                intervals[i][1] = intervals[i - 1][1];
+            }
+        }
+        res.add(intervals[length - 1]);
+
+        return res.toArray(new int[res.size()][]);
+    }
+
+    public static void main(String[] args) {
+        int[][] nums = {{4, 5}, {1, 5}, {0, 1}, {15, 18}};
+        Merge m = new Merge();
+        int[][] res = m.solution(nums);
+        System.out.println(res);
     }
 }
