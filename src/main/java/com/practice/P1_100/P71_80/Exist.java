@@ -31,19 +31,29 @@ import java.util.Deque;
  **/
 public class Exist {
 
+    // 看了答案之后，答案的这个设计更优越，把四个方向设成一个二维数组，然后遍历这四个方向，把row和col做一次相加
+    // 这比我一开始所使用的的一维数组canReach，然后四个方向写四个if，每个if里面的操作都一样，仅仅方向不一样的设计要强很多
+    private static final int[][] DIRECTIONS = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};
+    int row;
+    int col;
+    int strLength;
+    char[][] board;
+    String word;
 
     public boolean solution(char[][] board, String word) {
         if (board == null){
             return false;
         }
-        int rol = board.length;
-        int column = board[0].length;
-        int strLength = word.length();
+        this.board = board;
+        this.row = board.length;
+        this.col = board[0].length;
+        this.strLength = word.length();
+        this.word = word;
 
-        for (int i = 0; i < rol; i++) {
-            for (int j = 0; j < column; j++) {
-                boolean[] canReach = new boolean[]{i > 0, i < rol - 1, j > 0, j < column - 1};
-                boolean res = dfs(board, canReach, i, j, 0, word, strLength);
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                boolean[][] used = new boolean[row][col];
+                boolean res = dfs(used, i, j, 0);
                 if (res){
                     return true;
                 }
@@ -53,13 +63,30 @@ public class Exist {
         return false;
     }
 
-    private boolean dfs(char[][] board, boolean[] canReach,int curRol, int curCol, int cur, String word, int strLength) {
-        if (cur < strLength && board[curRol][curCol] == word.charAt(cur)){
+    private boolean dfs(boolean[][] used,int curRow, int curCol, int cur) {
+
+        if (board[curRow][curCol] == word.charAt(cur)){
             if (cur == strLength - 1){
                 return true;
             }
+            used[curRow][curCol] = true;
+            for (int[] direction : DIRECTIONS) {
+                //注意这里要使用新的row和col，否则会影响到回溯时的回滚操作的正确性，把下一次所使用的的位置给错误的置成false
+                int newRow = curRow + direction[0];
+                int newCol = curCol + direction[1];
+                if (inArea(newRow, newCol) && !used[newRow][newCol]) {
+                    if (dfs(used, newRow, newCol,cur + 1)) {
+                        return true;
+                    }
+                }
+            }
+            used[curRow][curCol] = false;
 
         }
         return false;
+    }
+
+    private boolean inArea(int curRow, int curCol){
+        return curRow >= 0 && curRow < row && curCol >=   0 && curCol < col;
     }
 }
