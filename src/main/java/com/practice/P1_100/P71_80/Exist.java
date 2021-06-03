@@ -33,6 +33,7 @@ public class Exist {
 
     // 看了答案之后，答案的这个设计更优越，把四个方向设成一个二维数组，然后遍历这四个方向，把row和col做一次相加
     // 这比我一开始所使用的的一维数组canReach，然后四个方向写四个if，每个if里面的操作都一样，仅仅方向不一样的设计要强很多
+
     private static final int[][] DIRECTIONS = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};
     int row;
     int col;
