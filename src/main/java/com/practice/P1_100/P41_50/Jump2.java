@@ -24,12 +24,16 @@ package com.practice.P1_100.P41_50;
  **/
 public class Jump2 {
     public int solution(int[] nums) {
+
         if (nums.length == 1){
             return 1;
         }
+
         int distance = 0;
         int time = 0;
+
         for (int i = 0; i <= distance; i++) {
+
             int temp = i + nums[i];
             if (temp > distance){
                 time++;
@@ -39,6 +43,7 @@ public class Jump2 {
             if (distance >= nums.length -1){
                 return time;
             }
+
         }
         return 0;
     }
