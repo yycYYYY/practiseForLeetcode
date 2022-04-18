@@ -25,15 +25,22 @@ public class LengthOfLongestSubstring {
     请注意，你的答案必须是 子串 的长度，"pwke"是一个子序列，不是子串。
      */
 
+    /*
+    写的有问题，用set就行，把queue里的value拿出来
+     */
     int solution1(String s){
-        if (s.length() < 2) return s.length();
+        if (s.length() < 2) {
+            return s.length();
+        }
 
         int maxlen = 0;
         int right = 0;
         Map<Character,Integer> queue = new HashMap<>();
 
         for (int i = 0;i < s.length();i++){
-            if (queue.containsKey(s.charAt(i))) right = queue.get(s.charAt(i))+1;
+            if (queue.containsKey(s.charAt(i))) {
+                right = queue.get(s.charAt(i))+1;
+            }
             queue.put(s.charAt(i),i);
             maxlen = Math.max(maxlen,i-right+1);
         }
