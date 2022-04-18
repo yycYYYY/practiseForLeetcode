@@ -3,17 +3,19 @@ package com.practice.sort;
 import java.util.Arrays;
 
 /**
- * 冒泡：
- * 时间复杂度 n'2
- * 最大时间复杂度 n'2
- * 最小时间复杂度 n'2
+ * 希尔：
+ * 就是多轮的插入排序
+ * 时间复杂度
+ * 最大时间复杂度
+ * 最小时间复杂度
  * 空间复杂度 1
  * 稳定性 0
  * @Author yuyongchao
  **/
 public class ShellSort {
-    public int[] solution(int[] arrays){
-        if (arrays == null || arrays.length == 0){
+
+    public int[] sort(int[] arrays){
+        if (arrays == null || arrays.length <= 1){
             return arrays;
         }
 
@@ -33,6 +35,6 @@ public class ShellSort {
 
     public static void main(String[] args) {
         ShellSort sort = new ShellSort();
-        System.out.println(Arrays.toString(sort.solution(new int[]{4, 6, 3, 2, 1})));
+        System.out.println(Arrays.toString(sort.sort(new int[]{4, 6, 3, 2, 1})));
     }
 }

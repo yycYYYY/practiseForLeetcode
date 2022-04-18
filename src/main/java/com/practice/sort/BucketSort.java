@@ -1,7 +1,7 @@
 package com.practice.sort;
 
 /**
- * @Author yuyongchao
+ * @Author yyc
  **/
 public class BucketSort {
 }

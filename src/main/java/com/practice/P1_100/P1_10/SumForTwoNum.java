@@ -1,6 +1,7 @@
 package com.practice.P1_100.P1_10;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  NO.1    两数之和
@@ -8,8 +9,6 @@ import java.util.HashMap;
 
  因为 nums[0] + nums[1] = 2 + 7 = 9
  所以返回 [0, 1]
- * @author admin
-
  */
 public class SumForTwoNum {
 
@@ -20,9 +19,9 @@ public class SumForTwoNum {
      */
     public int[] twoSum(int[] nums,int target) throws Exception {
 
-        for (int i = 0;i < nums.length;i++){
-            for (int j = i+1;j < nums.length;j++){
-                if (nums[i]+nums[j]==target){
+        for (int i = 0; i < nums.length; i++){
+            for (int j = i+1; j < nums.length; j++){
+                if (nums[i] + nums[j] == target){
                     return new int[]{i,j};
                 }
             }
@@ -35,7 +34,7 @@ public class SumForTwoNum {
     时间O[1]，空间O[n]
      */
     public int[] twoSumInHash(int[] nums,int target) throws Exception {
-        HashMap<Integer,Integer> numsKV = new HashMap();
+        Map<Integer,Integer> numsKV = new HashMap<>();
         for (int m = 0;m < nums.length;m++){
             numsKV.put(nums[m],m);
         }
@@ -46,6 +45,21 @@ public class SumForTwoNum {
             }
         }
         throw new Exception("没有两数之和");
+    }
+
+    public int[] solution(int[] nums, int target){
+        Map<Integer, Integer> numsKV = new HashMap<>();
+        int temp;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            temp = target - nums[i];
+            if (numsKV.containsKey(temp)){
+                return new int[]{numsKV.get(temp), i};
+            }else {
+                numsKV.put(nums[i], i);
+            }
+        }
+        throw new RuntimeException("没有两数之和");
     }
 
 //    public static void main(String[] args) {

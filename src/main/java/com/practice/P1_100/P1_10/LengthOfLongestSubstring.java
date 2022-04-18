@@ -1,9 +1,6 @@
 package com.practice.P1_100.P1_10;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class LengthOfLongestSubstring {
     /*
@@ -44,8 +41,10 @@ public class LengthOfLongestSubstring {
         return maxlen;
     }
 
-    //滑动窗口法
-    /*
+    /*滑动窗口法
+    从最左侧开始判断每一位的最大窗口是多大，添加最左侧的元素进入，让后从该位元素开始，窗口向右侧扩张，遇到重复元素停止，判断是否最大长度
+    直至左侧元素遍历结束，完成统计。
+
     1、判断下一个right和queue中是否重复，无重复则尽可能的向右添加无重复的元素，遇到重复的停止
     2、记录队列长度
     3、删除左面第一个，重复一操作
@@ -57,7 +56,8 @@ public class LengthOfLongestSubstring {
     int solution2(String s){
         int maxlen = 0;
         int right = 0;
-        HashSet<Character> queue = new HashSet<>();
+        Set<Character> queue = new LinkedHashSet<>();
+        Set maxQueue;
         for (int left = 0;left < s.length();left++){
             if (left != 0){
                 queue.remove(s.charAt(left-1));
@@ -66,6 +66,7 @@ public class LengthOfLongestSubstring {
                 queue.add(s.charAt(right));
                 right++;
             }
+            maxQueue = new HashSet(queue);
             maxlen = Math.max(maxlen,right-left);
         }
         return maxlen;

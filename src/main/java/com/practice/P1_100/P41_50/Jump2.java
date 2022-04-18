@@ -29,9 +29,14 @@ public class Jump2 {
         }
         int distance = 0;
         int time = 0;
+        int pre = 0;
         for (int i = 0; i <= distance; i++) {
             int temp = i + nums[i];
             if (temp > distance){
+                if (i - pre > nums[pre]){
+                    pre = i;
+                    time++;
+                }
                 time++;
                 distance = time;
             }
@@ -41,5 +46,10 @@ public class Jump2 {
             }
         }
         return 0;
+    }
+
+    public static void main(String[] args) {
+        Jump2 j = new Jump2();
+        System.out.println(j.solution(new int[]{2,3,1,1,4}));
     }
 }

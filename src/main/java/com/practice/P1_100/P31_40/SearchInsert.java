@@ -21,15 +21,18 @@ package com.practice.P1_100.P31_40;
     示例 4:
     输入: [1,3,5,6], 0
     输出: 0
+ * @author yyc
  */
 public class SearchInsert {
-    /*
-    就是简单的二分，千万不要想复杂了，只需要注意一下，target > nums[nums.length - 1]的边界情况
+    /**
+     * 就是简单的二分，千万不要想复杂了，只需要注意一下，target > nums[nums.length - 1]的边界情况
      */
-    int solution(int[] nums,int target){
+    public int solution(int[] nums,int target){
         int len = nums.length;
         int left = 0,right = len - 1;
-        if (target > nums[len - 1]) return len;
+        if (target > nums[len - 1]){
+            return len;
+        }
         int res = 0;
 
         while(left <= right){
