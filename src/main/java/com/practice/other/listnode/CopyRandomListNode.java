@@ -1,4 +1,4 @@
-package com.practice.other;
+package com.practice.other.listnode;
 
 import java.util.HashMap;
 import java.util.Map;

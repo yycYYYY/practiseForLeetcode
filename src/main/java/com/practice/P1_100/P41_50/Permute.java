@@ -36,7 +36,7 @@ public class Permute {
         }
 
         int length = nums.length;
-        Deque path = new ArrayDeque(length);
+        Deque<Integer> path = new ArrayDeque<>(length);
         boolean[] used = new boolean[length];
 
         dfs(nums, res, 0, length, path, used);
@@ -57,7 +57,7 @@ public class Permute {
      * @param path 遍历路径
      * @param used 当前数组的标识位，是否被遍历走过
      */
-    public void dfs(int[] nums, List res, int depth, int length, Deque path, boolean[] used){
+    public void dfs(int[] nums, List<List<Integer>> res, int depth, int length, Deque<Integer> path, boolean[] used){
         //如果遍历到叶子节点，就证明用完了所有的数，就used[]里所有都是true，将path添加至result
         if (depth == length){
             res.add(new ArrayList<>(path));
@@ -83,7 +83,7 @@ public class Permute {
         Permute p = new Permute();
         int[] a = {1,2,3};
         List<List<Integer>> res = p.solution(a);
-        for (List temp: res){
+        for (List<Integer> temp: res){
             System.out.println(temp.toString());
         }
     }

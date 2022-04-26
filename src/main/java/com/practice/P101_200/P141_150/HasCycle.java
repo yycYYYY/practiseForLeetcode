@@ -23,6 +23,12 @@ import java.util.Set;
  */
 public class HasCycle {
 
+    /*
+    注： 如何找到有环单链表的入环节点？
+    先通过快慢指针（起始点出发，一个走一步一个走两步）找到环内的相遇节点；
+    找到相遇节点后，开两个指针，一个指向起始点，一个指向相遇节点，依次向后单步遍历，两者再次相遇的节点就是入环节点。但是应该怎么证明？？？
+     */
+
     /**
      * 快慢指针法
      * 一块一慢，如果相遇，就有环，不相遇就没环
@@ -44,6 +50,33 @@ public class HasCycle {
             }
         }
         return false;
+    }
+
+    /**
+     * 快慢指针判断是否有环，如果有环，返回入环节点
+     * 先通过快慢指针（起始点出发，一个走一步一个走两步）找到环内的相遇节点
+     * 找到相遇节点后，开两个指针，一个指向起始点，一个指向相遇节点，依次向后单步遍历，两者再次相遇的节点就是入环节点
+     */
+    public ListNode solutionReturnNode(ListNode head) {
+        if (head == null || head.next == null || head.next.next == null){
+            return null;
+        }
+        ListNode root = head;
+        ListNode slow = head;
+        ListNode fast = head;
+        while (slow.next != null){
+            slow = slow.next;
+            fast = fast.next == null? head : fast.next;
+            fast = fast.next == null? head : fast.next;
+            if (slow == fast){
+                break;
+            }
+        }
+        while (root.next != slow.next){
+            root = root.next;
+            slow = slow.next;
+        }
+        return root;
     }
 
     /**
