@@ -196,7 +196,6 @@ public class TreeTraversal {
                 stack.add(head.left);
             }
         }
-        return;
     }
 
     /**
@@ -221,6 +220,5 @@ public class TreeTraversal {
                 queue.addFirst(head.left);
             }
         }
-        return;
     }
 }
