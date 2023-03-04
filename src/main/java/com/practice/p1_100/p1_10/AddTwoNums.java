@@ -1,4 +1,4 @@
-package com.practice.p1_100.P1_10;
+package com.practice.p1_100.p1_10;
 
 import com.practice.dataStructure.ListNode;
 
@@ -22,12 +22,12 @@ public class AddTwoNums {
         ListNode cur = res;
         int carry = 0;
 
-        while (Objects.nonNull(l1)||Objects.nonNull(l2)){
-            int a = l1 == null?0:l1.val;
-            int b = l2 == null?0:l2.val;
+        while (Objects.nonNull(l1) || Objects.nonNull(l2)){
+            int a = l1 == null ? 0 : l1.val;
+            int b = l2 == null ? 0 : l2.val;
 
-            cur.next = (new ListNode((a+b+carry)%10));
-            carry = (a+b+carry)/10;
+            cur.next = (new ListNode((a + b + carry) % 10));
+            carry = (a + b + carry) / 10;
 
             cur = cur.next;
 
@@ -50,6 +50,10 @@ public class AddTwoNums {
         ListNode l1 = new ListNode(9);
         ListNode l2 = new ListNode(2);
         AddTwoNums a = new AddTwoNums();
-        System.out.println(a.AddTwoNumsSimple(l1,l2).val+" "+a.AddTwoNumsSimple(l1,l2).next.val);
+        ListNode res = a.AddTwoNumsSimple(l1, l2);
+        while (res != null){
+            System.out.println(res.val);
+            res = res.next;
+        }
     }
 }

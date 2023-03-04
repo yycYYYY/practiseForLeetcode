@@ -1,4 +1,4 @@
-package com.practice.p1_100.P1_10;
+package com.practice.p1_100.p1_10;
 
 public class ConvertZ {
 

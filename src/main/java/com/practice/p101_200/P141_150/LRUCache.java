@@ -143,16 +143,19 @@ public class LRUCache {
         }
     }
 
-    public static void main(String[] args) {
-        LRUCache lRUCache = new LRUCache(1);
-        lRUCache.put(12, 1);
-        System.out.println(lRUCache.get(2));
-        lRUCache.put(15, 11);
-        lRUCache.put(5, 2);
-        lRUCache.put(1, 15);
-        lRUCache.put(4, 2);
-        System.out.println(lRUCache.get(5));
-        lRUCache.put(15, 15);
+    public static void main(String[] args) throws InterruptedException {
+//        lRUCache.put(12, 1);
+//        System.out.println(lRUCache.get(2));
+//        synchronized (lRUCache){
+//            lRUCache.wait();
+//        }
+//        lRUCache.put(15, 11);
+//        lRUCache.put(5, 2);
+//        lRUCache.put(1, 15);
+//        lRUCache.put(4, 2);
+//        System.out.println(lRUCache.get(5));
+//        lRUCache.put(15, 15);        LRUCache lRUCache = new LRUCache(1);
+
 
 //        lRUCache.put(4, 4);
 //        System.out.println(lRUCache.get(1));
